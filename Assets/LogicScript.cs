@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class LogicScript : MonoBehaviour
 	{
 		playerScore += toAdd;
 		playerScoreText.text = playerScore.ToString();
+	}
+
+	public void restartGame()
+	{
+
 	}
 
 
