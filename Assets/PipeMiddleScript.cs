@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PipeMiddleScript : MonoBehaviour
@@ -10,7 +9,7 @@ public class PipeMiddleScript : MonoBehaviour
 
 	void Start()
 	{
-		logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+		logic = LogicScript.Instance;
 	}
 
 	// Update is called once per frame
@@ -24,7 +23,6 @@ public class PipeMiddleScript : MonoBehaviour
 		if (other.gameObject.layer == 3)
 		{
 			logic.addScore(1);
-
 		}
 	}
 }
