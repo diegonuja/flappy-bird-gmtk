@@ -561,6 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe73093feb7f94987b74fe910de1f2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bird: {fileID: 1408446687}
   playerScore: 0
   playerScoreText: {fileID: 315642705}
   gameOverScreen: {fileID: 111716789}

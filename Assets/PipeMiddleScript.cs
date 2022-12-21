@@ -22,7 +22,7 @@ public class PipeMiddleScript : MonoBehaviour
 	{
 		if (other.gameObject.layer == 3)
 		{
-			logic.addScore(1);
+			logic.AddScore(1);
 		}
 	}
 }

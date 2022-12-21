@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class BirdScript : MonoBehaviour
 	public LogicScript logic;
 
 	public bool isAlive = true;
+
+	public event EventHandler OnPipeCollision;
 
 	// Start is called before the first frame update
 	void Start()
@@ -30,7 +33,7 @@ public class BirdScript : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		logic.gameOver();
+		OnPipeCollision?.Invoke(this, EventArgs.Empty);
 		isAlive = false;
 	}
 }
