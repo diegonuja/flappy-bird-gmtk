@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class BirdScript : MonoBehaviour
 {
+	private const int PIPE_LAYER = 6;
+
 	[SerializeField]
 	private Rigidbody2D myRigidbody;
 	public float flapStrength;
-
-	public LogicScript logic;
 
 	public bool isAlive = true;
 
 	public event EventHandler OnPipeCollision;
 
+	public event EventHandler OnPipeMiddleTrigger;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-		logic = LogicScript.Instance;
 	}
 
 	// Update is called once per frame
@@ -33,7 +34,15 @@ public class BirdScript : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		OnPipeCollision?.Invoke(this, EventArgs.Empty);
-		isAlive = false;
+		if (other.gameObject.layer == PIPE_LAYER)
+		{
+			OnPipeCollision?.Invoke(this, EventArgs.Empty);
+			isAlive = false;
+		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (isAlive) OnPipeMiddleTrigger?.Invoke(this, EventArgs.Empty);
 	}
 }

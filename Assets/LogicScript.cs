@@ -9,13 +9,19 @@ public class LogicScript : MonoBehaviour
 
 	[SerializeField]
 	private GameObject bird;
+
 	private BirdScript birdScript;
 
 	public int playerScore = 0;
 
-	public Text playerScoreText;
-
 	public GameObject gameOverScreen;
+
+	// Event used to updated the UI
+	public event EventHandler<OnUpdateScoreEventArgs> OnUpdateScore;
+	public class OnUpdateScoreEventArgs : EventArgs
+	{
+		public int score;
+	}
 
 	private void Start()
 	{
@@ -25,8 +31,20 @@ public class LogicScript : MonoBehaviour
 			if (birdScript != null)
 			{
 				birdScript.OnPipeCollision += BirdCollisionHandler;
+				birdScript.OnPipeMiddleTrigger += OnPipeMiddleHandler;
 			}
 		}
+	}
+
+	private void OnDestroy()
+	{
+		birdScript.OnPipeCollision -= BirdCollisionHandler;
+		birdScript.OnPipeMiddleTrigger -= OnPipeMiddleHandler;
+	}
+
+	private void OnPipeMiddleHandler(object sender, EventArgs e)
+	{
+		AddScore(1);
 	}
 
 	private void BirdCollisionHandler(object sender, EventArgs e)
@@ -48,10 +66,10 @@ public class LogicScript : MonoBehaviour
 	}
 
 	[ContextMenu("Increase score")]
-	public void AddScore(int toAdd)
+	private void AddScore(int toAdd)
 	{
 		playerScore += toAdd;
-		playerScoreText.text = playerScore.ToString();
+		OnUpdateScore?.Invoke(this, new OnUpdateScoreEventArgs { score = playerScore });
 	}
 
 	public void RestartGame()

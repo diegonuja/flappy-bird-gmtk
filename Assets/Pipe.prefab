@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6767163592514183722}
   - component: {fileID: 1753630389795244519}
-  - component: {fileID: 8271053678818559681}
   m_Layer: 0
   m_Name: Middle
   m_TagString: Untagged
@@ -59,18 +58,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 15}
   m_EdgeRadius: 0
---- !u!114 &8271053678818559681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329782743438814748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2cee06f192174c85ac5d39b7df9742f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4612548693515098421
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +118,7 @@ GameObject:
   - component: {fileID: 4612548694369290147}
   - component: {fileID: 4612548694369290149}
   - component: {fileID: 4612548694369290148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TopPipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +229,7 @@ GameObject:
   - component: {fileID: 4612548694795677256}
   - component: {fileID: 4612548694795677258}
   - component: {fileID: 4612548694795677257}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BottomPipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
